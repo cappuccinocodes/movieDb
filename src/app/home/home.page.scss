@@ -25,3 +25,38 @@
 #container a {
   text-decoration: none;
 }
+
+.search-box {
+  background-image: url('https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/ghQrKrcEpAlkzBuNoOCSxHQXWqw.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 150px;
+
+  h2 {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    color: #fff;
+    padding-left: 10px;
+  }
+}
+
+ion-searchbar {
+  background: none;
+  --background: #fff;
+  --border-radius: 20px;
+}
+
+.trending {
+  margin-top: 0px;
+}
+
+ion-row {
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+}
+
+.preview {
+  padding: 10px;
+}

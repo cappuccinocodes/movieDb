@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar [style.--background]="mainColor" [style.--color]="textColor">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ movie?.title || movie?.original_name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [style.--background]="mainColor" [style.--color]="textColor">
+  <div class="img-gradient">
+    <img [src]="background" class="backbround" *ngIf="background">
+  </div>
+  <img [src]="imageUrl" class="movie-img" *ngIf="imageUrl">
+
+  <div class="header">
+    <p class="title">{{ movie?.title || movie?.original_name }}
+      <span class="release">({{ (movie?.release_date || movie?.first_air_date) | date:'y' }})</span>
+    </p>
+  </div>
+
+  <div class="info" *ngIf="movie">
+    <div>{{ (movie?.release_date || movie?.first_air_date) | date: 'shortDate'}} - {{ movie.runtime | duration }}</div>
+    <span *ngFor = "let g of movie.genres; let isLast = last">
+      {{ g.name }}<span *ngIf="!isLast">,</span> <!--adds virgula if element isn't last, very cool-->
+    </span>
+  </div>
+
+  <div class="overview">
+    <p><em> {{movie?.tagline}} </em></p>
+    <h2>Overview</h2>
+    {{ movie?.overview }}
+  </div>
+
+  <h2 class="ion-padding-start">Top Billed Cast</h2>
+
+  <ion-slides [options]="opts">
+    <ion-slide *ngFor="let c of cast">
+      <cast [actor]="c"></cast>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

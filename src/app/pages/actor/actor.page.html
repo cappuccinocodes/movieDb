@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ bio?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <img [src]="profileImg">
+  </div>
+
+  <div class="ion-padding">
+    <h2>Biography</h2>
+    {{ bio?.biography }}
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-row class="entry" *ngFor="let act of acting; let i = index" tappable [routerLink]="['/', act.media_type]">
+        <ion-col size="3">
+          <span class="year"> {{ (act.first_air_date || act.release_date) | date: 'yyyy' }}</span>
+        </ion-col>
+        <ion-col size="9">
+          <span class="title">{{ act.title || act.original_name }} </span>
+        </ion-col>
+        <ion-col size="12" *ngIf="acting[i+1] && acting[i+1].custom_year != act.custom_year">
+          <div class="divider"></div>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

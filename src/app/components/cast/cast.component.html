@@ -1,0 +1,9 @@
+<ion-card [routerLink]="['/actor', actor.id]">
+  <ion-card-header>
+    <img [src]="imageUrl" *ngIf="actor.profile_path">
+  </ion-card-header>
+  <ion-card-content>
+    <b>{{ actor.name }}</b><br>
+    <span>{{ actor.character }}</span>
+  </ion-card-content>
+</ion-card>
